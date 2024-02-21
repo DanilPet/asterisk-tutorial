@@ -1,0 +1,11 @@
+.select {
+    display: inline-block;
+    position: absolute;
+    top: 124px;
+    left: 0;
+    width: 349px;
+    min-height: 89;
+    background: rgba(78, 78, 78, 1);
+    padding: 0 15px;
+    z-index: 40;
+  }

@@ -1,0 +1,187 @@
+@media (max-width: 1440px ) {
+    .swiper-slide, .swiper-wrapper .slider_container {
+        min-width: 355px
+    }
+  }
+  
+@media (max-width: 1024px ) {
+.swiper-slide, .swiper-wrapper .slider_container {
+    min-width: 217px
+
+}
+
+
+
+.slider .slider_block .slider_content .slider_lection {
+    font-size: 18px;
+}
+
+.slider_menu .arrow_container {
+    width: 28%;
+}
+
+.slider_container .lection .lection {
+    font-size: 13px;
+}
+
+.slider .slider_footer .slider_arrow_container {
+    width: 20%;
+}
+
+}
+
+@media (max-width: 768px ) {
+.swiper-slide, .swiper-wrapper .slider_container {
+    min-width: 70px
+}
+
+.slider_practice h3 {
+    font-size: 35px;
+}
+
+.swiper-wrapper .slider_container .select .module {
+    font-size: 10px;
+}
+
+.slider .slider_block .slider_content .slider_container .slider_lection {
+    font-size: 14px;
+}
+
+.slider .slider_block .slider_content h2 {
+    font-size: 21px;
+}
+
+.slider_menu .arrow_container {
+    width: 45%;
+}
+
+.slider_content {
+    width: 300%;
+}
+
+header h1 {
+    font-size: 25px;
+}
+
+header .search input {
+    font-size: 12px;
+    height: 50px;
+}
+
+#footer footer {
+    height: 140px;
+    padding: 0 19px
+}
+
+#footer footer .footer-exit {
+    width: 15%;
+}
+
+footer .footer-data {
+    font-size: 18px;
+}
+.slider .slider_footer .slider_arrow_container {
+    width: 37%;
+}
+
+.slider_test .test .my-check-label {
+    font-size: 12px;
+}
+
+.slider_test .test h4 {
+    font-size: 18px;
+}
+
+.slider_test h3 {
+    font-size: 30px;
+}
+
+.image_container img {
+    width: 70%;
+
+}
+
+.image_container .image_title {
+    font-size: 14px;    
+}
+
+.button-container .test-button, .slider .slider_footer .button_test {
+    font-size: 10px;
+    width: 42%;
+    height: 40px;
+}
+
+
+}
+@media (max-width: 1258px) and (min-width: 768px) {
+.swiper-wrapper .slider_container .select {
+    top: 96px;
+}
+}
+
+@media (max-width: 425px ) {
+.swiper-slide, .swiper-wrapper .slider_container {
+    min-width: 92px
+}
+
+.slider .slider_block .slider_content .slider_lection {
+    font-size: 14px;
+}
+
+.slider_container .lection {
+    height: 80px;
+    font-size: 9px;
+}
+
+.slider .slider_block .image_container .slider-img {
+    width: 100%
+}
+
+.slider_menu .arrow_container {
+    width: 50%;
+}
+
+#footer footer {
+    padding: 0 19px
+}
+
+.slider_practice h3 {
+    font-size: 27px;
+}
+
+header h1 {
+    font-size: 35px;
+}
+
+#root header {
+    padding: 0 12px
+}
+
+.swiper-wrapper .slider_container .select .module {
+    font-size: 8px;
+    height: 59px;
+}
+
+.slider .slider_footer .slider_arrow_container {
+    width: 43%;
+}
+
+.slider .slider_footer .slider_arrow_container .arrow img {
+    width: 98%
+}
+
+.button-container .test-button, .slider .slider_footer .button_test {
+    font-size: 10px;
+    width: 42%;
+    height: 40px;
+}
+
+
+}
+
+@media (max-width: 375px ) {
+footer .footer-data {
+    font-size: 13px;
+}
+
+}
