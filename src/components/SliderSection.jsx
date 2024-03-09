@@ -85,14 +85,38 @@ export default function SliderSection({... props}) {
             <div className="slider_menu" >
                 <div className="arrow_container" id = "prev_arrow"><img className="arrow w-100" src="arrowL.png"></img></div>
                 <Swiper
-                    slidesPerView={4}
+                    slidesPerView={1}
                     spaceBetween={10}
                     loop={true}
                     navigation={{
                         nextEl: "#next_arrow",
                         prevEl: "#prev_arrow"
                     }}
-                    speed={400}
+                    speed={400}       
+                    
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                            spaceBetween: 30,
+                        },
+                        425: {
+                            slidesPerView: 1,
+                            spaceBetween: 50,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 10,
+                        },
+                        1000: {
+                            slidesPerView: 3,
+                            spaceBetween: 10,
+                        },
+                        1600: {
+                            slidesPerView: 4,
+                            spaceBetween: 20,
+                        }
+                        
+                    }}             
                     
                     modules={[Navigation, Pagination]}
                     className="mySwiper"
@@ -143,15 +167,8 @@ export default function SliderSection({... props}) {
                 </Swiper>
 
                 <div className="arrow_container" id = "next_arrow"><img className="arrow w-100" src="arrowR.png"></img></div>
-                        
                     
-            </div>
-
-        
-        
-        </>
-        
-        
-        
+            </div>        
+        </>        
     )
 }

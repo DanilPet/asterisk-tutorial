@@ -1,6 +1,6 @@
 export default function Lection({... props}) {
     const thisModule = props.module
-    console.log("thisModule", props.module)
+
     return (
         <>{thisModule && <div className="slider">
         <div className="slider_block">

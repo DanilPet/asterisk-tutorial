@@ -172,7 +172,7 @@ export const TestsA = [
                         {id: 5, img: "", fact: 5, styled: {top: 66 + "%", left: 52 + "%", border: 3 + "px" + " dashed " + "#423a3a", width: 72 + "px", height: 33 + "px", transform: "rotate(" + 47 + "deg" }, number: null, idA: null },
                         {id: 6, img: "", fact: 3, styled: {top: 72 + "%", left: 29 + "%", border: 3 + "px" + " dashed " + "#423a3a", width: 72 + "px", height: 33 + "px", transform: "rotate(" + 300 + "deg" }, number: null, idA: null },
                         {id: 7, img: "", fact: 2, styled: {top: 33 + "%", left: 25 + "%", border: 3 + "px" + " dashed " + "#423a3a", width: 72 + "px", height: 33 + "px", transform: "rotate(" + 37 + "deg" }, number: null, idA: null },
-                    ]}
+                    ]},
                 ],
                 name: "secondDrag",
                 var: 'secondTest',

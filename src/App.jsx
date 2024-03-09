@@ -1,24 +1,31 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Header from './components/Header'
-import Slider from './components/Slider'
 import Course from './Course'
-import { profile } from './data/Profile'
 import Footer from './components/Footer'
-
 
 function App() {
   const [user, setUser] = useState({})
   const [errors, setErrors] = useState([])
   const [rend, setRend] = useState(false)
 
+  function ae(ai) {
+    if (ai) {
+      var f = "";
+      for (var c = 0; c < ai.length; c++) {
+          f += String.fromCharCode(ai.charCodeAt(c) ^ (1 + (ai.length - c) % 32))
+      }
+      return f
+    }
+    return null
+    
+  }
+
   useEffect(() => {
-    const newUser = localStorage.getItem('user') || JSON.stringify({})
+    const newUser = ae(localStorage.getItem('tesgmddslogrm23')) || JSON.stringify({})
     setUser(JSON.parse(newUser))
   }, [])
 
+  // шифровка данных
   
   function login() {
     let newErrors = []
@@ -28,14 +35,14 @@ function App() {
       date: new Date().toLocaleTimeString(),
     }
 
-    if (newUser.name.length < 1 || typeof name != "string") {
+    if (newUser.name.length < 1 || typeof newUser.name != "string") {
       newErrors.push("В имени должно быть не менее 1 символа")
     }
 
     if (newUser.name.length >=  20) {
       newErrors.push("У тебя слишком длинное имя, смени его")
     }
-    if (newUser.surName.length < 1 || typeof name != "string") {
+    if (newUser.surName.length < 1 || typeof newUser.name != "string") {
       newErrors.push("В фамилии должно быть не менее 1 символа")
     }
     if (newUser.surName.length >=  20) {
@@ -45,17 +52,13 @@ function App() {
     if (newErrors.length !== 0) {
       setErrors(newErrors)
     } else {
-      localStorage.setItem('user', JSON.stringify(newUser))
+      localStorage.setItem('tesgmddslogrm23', ae(JSON.stringify(newUser)))
       setUser(newUser)
     }
     
   }
 
-  
-
-  return (
-
-    
+  return (    
     <>     
 
       {!user.name && <>
@@ -76,7 +79,7 @@ function App() {
       </>}
      
 
-      {user.name && <Course header = "Asterisk" />}
+      {user.name && <Course encr = {ae} header = "Asterisk" />}
                 
       {user.name !== null && <Footer user = {user} clearUser = {setUser}/>}
       

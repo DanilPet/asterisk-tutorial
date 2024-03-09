@@ -5,14 +5,13 @@ import Practice from "./slides/Practice"
 import Task from "./slides/Task"
 
 export default function Slider({... props}) {
-    
     if (props.thisTest === true) {
         return( 
  
             <>
                 
                 {props.visible && (
-                     <Test test = {props.test} rend = {props.rend} block = {props.block} />   
+                     <Test encr = {props.encr} test = {props.test} rend = {props.rend} block = {props.block} />   
                     
                 )}
                 

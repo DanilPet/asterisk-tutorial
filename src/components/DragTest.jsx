@@ -14,10 +14,6 @@ export default function DragTest({... props}) {
         setQuestions(props.q)
     }, [props.rend])
 
-    
-
-    const test = [false, false, false, false] == false
-
     function examination() {
         if (questions.map((question) => {
             if (question.answers.map((answer) => {
@@ -94,9 +90,6 @@ export default function DragTest({... props}) {
         if (newCurrent !== null) {
             newQuestions.splice(newCurrent.id, 1, newCurrent)
         } 
-
-        
-
         setQuestions(newQuestions)
     }}
 
@@ -125,7 +118,7 @@ export default function DragTest({... props}) {
         }        
        
     }    
-
+    
     // возврат ответа
     function VariablesDropHandle(e, question) {
         e.preventDefault()
@@ -134,14 +127,14 @@ export default function DragTest({... props}) {
         final(question, newVariables, true)
         
     }
+
     // DRAG-START
     
     function dragStartHandle(e, variable, question) {
         setCurrentVariable(variable)
         if (question) {
             setCurrentQuestion(question)
-        }
-        
+        }       
 
     }
 
@@ -154,9 +147,7 @@ export default function DragTest({... props}) {
             } 
         } else {
             e.preventDefault()
-        }
-
-        
+        }        
     }
  
     return (

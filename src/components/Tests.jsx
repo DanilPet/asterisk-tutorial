@@ -12,10 +12,11 @@ export default function Tests({... props}) {
     const [numberA, setNumberA] = useState(0)
     const [isFinish, setIsFinish] = useState(false)
     const [right, setRight] = useState(null)
-    const [results, setResult] = useState([])
-    let result;
+    const [replays, setReplays] = useState([])
+    let result = 2;
+    let replay = replays.filter((replay) => replay.id === testId)
     if (numberA && numberQ) {
-        let point = 5 / numberQ * numberA    
+        let point = 5 / numberQ * numberA 
         if (point < 2.5) {
             result = 2
         } else if (point >= 2.5 && point < 3.5 ) {
@@ -27,22 +28,28 @@ export default function Tests({... props}) {
         }
     } 
 
-    useEffect(() => {
-        localStorage.setItem('tests', JSON.stringify(props.test))
+    function testStart() {
+        setIsFinish(false)
+        props.block(true)
+        localStorage.setItem('qwertyuiojh', props.encr(JSON.stringify(props.test)))
+        let newReplays = JSON.parse(props.encr(localStorage.getItem('tesgmddslogrm32')))  || JSON.stringify([]) 
+        if (props.encr(localStorage.getItem('tesgmddslogrm32')) === null) {
+            localStorage.setItem('tesgmddslogrm32', props.encr(JSON.stringify([])))
+        }
+                
+        setReplays(newReplays)
+    }
 
+    useEffect(() => {
+        testStart()
     }, [])
 
     useEffect(() => {
         if(isFinish === true) {
             props.block(false)    
-            localStorage.removeItem("tests")
+            localStorage.removeItem("qwertyuiojh")
         }
     }, [isFinish])
-
-    useEffect(() => {
-        const newResults = localStorage.getItem('results') || JSON.stringify([]) 
-        setResult(JSON.parse(newResults))
-    }, [])
 
     function numberPush() {
         let newNumber = 0
@@ -66,8 +73,6 @@ export default function Tests({... props}) {
                 if (index === id) {
                     newArray[index] = value 
                 }         
-                
-                
             })
 
             setExam(newArray)
@@ -77,11 +82,21 @@ export default function Tests({... props}) {
                 newArray.push(false)
             })
             setExam(newArray)
-            
         }       
-        
     }
 
+    function replaysPush() {
+        let newReplays = structuredClone(replays)
+        newReplays.map((replay) => {
+            if (replay.id === testId) {
+                replay.replays += 1
+            }  
+        })
+        if (newReplays.filter((replay) => {return replay.id === testId}).length === 0) {
+            newReplays.push({id: testId, replays: 1})
+        }
+        localStorage.setItem("tesgmddslogrm32", props.encr(JSON.stringify(newReplays)) )
+    }
 
     useEffect(() => {
         setRight(null)
@@ -90,22 +105,21 @@ export default function Tests({... props}) {
     },
         [props.rend]
     )
-    
 
     function onTest() {
         if (exam.includes (false) && !isFinish) {
             setRight(false)
             numberPush()
             setIsFinish(true)
-        } else if (exam.includes (true) && !isFinish) {
-         
+            replaysPush()
+        } else if (exam.includes (true) && !isFinish) {         
             setRight(true)
             numberPush()
             setIsFinish(true)
-
+            replaysPush()
         }
-    }
 
+    }
     
     const [render, setRender] = useState(false)
 
@@ -124,11 +138,16 @@ export default function Tests({... props}) {
         }) }
 
             <div className='button-container'>
-                <Button variant="success" className='test-button w-25' onClick={onTest}>Проверить ответы</Button>
+                {isFinish === false && <Button variant="success" className='test-button w-25' onClick={onTest}>Проверить ответы</Button>}
+                {isFinish === true && <Button variant="success" className='test-button w-25' onClick={testStart}>Повторить тест</Button>}
+            </div>
+
+            <div className='results-container'>{replay.length > 0 && <>Количество повторов: {replay[0].replays}</>}</div>
+            <div className='results-container'>
+                {right === true && <>Все ответы верные!!!  Оценка: 5 </>}
+                {right === false && <>Ты где-то ошибся!!!  Оценка: {result}</>}
             </div>
             
-            {right === true && <>Все ответы верные!!!  Оценка: 5 </>}
-            {right === false && <>Ты где-то ошибся!!!  Оценка: {result}</>}
         </>
     )
 }

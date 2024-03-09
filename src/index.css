@@ -476,8 +476,8 @@ h4 {
   align-items: center;
   margin: 0 auto;
   padding: 56px 0;
-  width: 1128px;
-  height: 676px;
+  width: 58%;
+  min-height: 60vh;
   border-radius: 19px;
   border: 1px solid #000;
   background: #FFF;
@@ -492,7 +492,7 @@ h4 {
 }
 
 .login-form {
-  width: 396px;
+  width: 63%;
   height: 75px;
   border-radius: 21px;
   border: 1px solid #038608;
@@ -501,6 +501,7 @@ h4 {
   text-align: center;
   font-size: 24px;
   font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .login-form::placeholder { 
@@ -512,7 +513,7 @@ h4 {
 }
 
 .login-button {
-  width: 538px;
+  width: 63%;
   height: 73px;
 }
 
@@ -566,6 +567,7 @@ h4 {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin-bottom: 20px;
 
 }
 
@@ -579,4 +581,8 @@ h4 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.results-container {
+  text-align: center;
 }

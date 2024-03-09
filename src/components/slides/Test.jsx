@@ -10,25 +10,12 @@ export default function Test({... props}) {
     const [results, setResult] = useState([])
     const [finish, setFinish] = useState(false)
 
-    useEffect(() => {
-        const newResults = localStorage.getItem('results') || JSON.stringify([]) 
-        setResult(JSON.parse(newResults))
-        setFinish(false)
-    }, [props.rend])
-    useEffect(() => {
-        results.map((result) => {
-            if (test.id === result.id) {
-                setFinish(true)
-                props.block(false)
-            }
-        })
-    }, [results])
 
     return (
         <div className="slider">
             <div className="slider_test">
                 <h3>{props.test.name}</h3>
-                <Tests test = {test} rend = {props.rend} block = {props.block}/>
+                <Tests encr = {props.encr} test = {test} rend = {props.rend} block = {props.block}/>
                
             </div>
             

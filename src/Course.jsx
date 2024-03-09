@@ -36,9 +36,8 @@ export default function Course({...props}) {
 	const [visibles, setVisibles] = useState(visiblesCreate(choiced[0]))
 
 	useEffect(() => {
-        const newTests = JSON.parse(localStorage.getItem('tests'))  || JSON.stringify({}) 
+        const newTests = JSON.parse(props.encr(localStorage.getItem('qwertyuiojh')))  || JSON.stringify({}) 
         setTests(newTests)
-		console.log("newTests", newTests)
 		if (newTests.tests) {
 			setTimeout(() => {sliderF(null, null, newTests)}, 2)
 		}
@@ -75,8 +74,6 @@ export default function Course({...props}) {
 
 	}
 
-	
-
 	useEffect(() => {	
 		if (moduleId === modules.length - 1 && 
 				choiced[2].map((test) => {
@@ -110,7 +107,6 @@ export default function Course({...props}) {
 		setThisTask(false)
 		
 		if (test && blockSlides === false) {			
-			console.log("Test2:", test)
 			setRend(t => !t)
 			setVisible(true)
 			setThisTest(false)
@@ -120,7 +116,6 @@ export default function Course({...props}) {
 				setTests(test)	
 			}, 2)
 			
-			setBlockSlides(true)
 
 		} else if(practice && blockSlides === false) {
 			setVisible(true)
@@ -157,7 +152,6 @@ export default function Course({...props}) {
 			setModuleId(moduleId)
 		}
 	}
-
 	
 	return (
 	<div onClick={(e) => {
@@ -168,7 +162,7 @@ export default function Course({...props}) {
 	}}>
 	
 		<Header sliderFunction = {sliderF} header = {props.header} choiced = {choiced} visiblesCreate = {() => {return visiblesCreate(choiced[0])}} visibles = {visibles} setVisibles = {(r) => {setVisibles(r)}}/>
-		<Slider module = {modules[moduleId]} rend = {rend} block = {setBlockSlides} visible = {visible} rightArrow={onRightArrow} leftArrow={onLeftArrow} thisTest = {thisTest} test = {tests} tButton = {testButton} tOpen = {sliderF} practice = {practice} thisPractice = {thisPractice} thisTask = {thisTask} />
+		<Slider module = {modules[moduleId]} encr = {props.encr} rend = {rend} block = {setBlockSlides} visible = {visible} rightArrow={onRightArrow} leftArrow={onLeftArrow} thisTest = {thisTest} test = {tests} tButton = {testButton} tOpen = {sliderF} practice = {practice} thisPractice = {thisPractice} thisTask = {thisTask} />
 		
 		
 	</div>
