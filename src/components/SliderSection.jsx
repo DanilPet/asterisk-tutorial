@@ -40,6 +40,7 @@ export default function SliderSection({... props}) {
         height: sStyle,
         transition: "all "  + 1000 + "ms"
     }
+    // поисковик
     var thisSlides = props.choiced[0]
         
         .filter((slide) => {
@@ -117,7 +118,8 @@ export default function SliderSection({... props}) {
                     className="mySwiper"
 
                 >
-                {
+                {/* слайдер */}
+                {                    
                 thisSlides.map((slide) => {
                     return <SwiperSlide className="slider_container" key={slide.id}>
                             <>
