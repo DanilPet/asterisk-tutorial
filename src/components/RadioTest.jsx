@@ -37,13 +37,10 @@ export default function RadioTest({... props}) {
     
     function examination(id) {
         if (id === props.trueVar) {
-
             props.exam(true)
         } else {
-
             props.exam(false)
-        }
-        
+        }        
     }
 
     return (

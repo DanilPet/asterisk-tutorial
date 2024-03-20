@@ -15,18 +15,20 @@ export default function Tests({... props}) {
     const [replays, setReplays] = useState([])
     let result = 2;
     let replay = replays.filter((replay) => replay.id === testId)
-    if (numberA && numberQ) {
-        let point = 5 / numberQ * numberA 
+    function assessment(num) {
+        let point = 5 / numberQ * num
         if (point < 2.5) {
-            result = 2
+            return 2
         } else if (point >= 2.5 && point < 3.5 ) {
-            result = 3
+            return 3
         } else if (point >= 3.5 && point < 4.5) {
-            result = 4
+            return 4
         } else if (point >= 4.5) {
-            result = 5
+            return 5
         }
-    } 
+   }
+   
+    result = assessment(numberA)
 
     function testStart() {
         setIsFinish(false)
@@ -38,6 +40,7 @@ export default function Tests({... props}) {
         }
                 
         setReplays(newReplays)
+        setRight(null)
     }
 
     useEffect(() => {
@@ -53,6 +56,7 @@ export default function Tests({... props}) {
 
     function numberPush() {
         let newNumber = 0
+        
         exam.map((n) => {
             if(n === true) {
                 newNumber += 1
@@ -61,20 +65,18 @@ export default function Tests({... props}) {
             }
         })
         setNumberA(newNumber)
+        return newNumber 
         
     }
 
     function examPush(id, value = true) {
-
         let newArray = exam
-        if (typeof id === "number") {          
-           
+        if (typeof id === "number") {
             tests.map((test, index) => {
                 if (index === id) {
                     newArray[index] = value 
                 }         
             })
-
             setExam(newArray)
         } else {
             let newArray = []
@@ -87,13 +89,15 @@ export default function Tests({... props}) {
 
     function replaysPush() {
         let newReplays = structuredClone(replays)
+        let myNumber = assessment(numberPush())
         newReplays.map((replay) => {
             if (replay.id === testId) {
                 replay.replays += 1
+                replay.result = myNumber
             }  
         })
         if (newReplays.filter((replay) => {return replay.id === testId}).length === 0) {
-            newReplays.push({id: testId, replays: 1})
+            newReplays.push({id: testId, replays: 1, result: myNumber})
         }
         localStorage.setItem("tesgmddslogrm32", props.encr(JSON.stringify(newReplays)) )
     }
@@ -142,10 +146,15 @@ export default function Tests({... props}) {
                 {isFinish === true && <Button variant="success" className='test-button w-25' onClick={testStart}>Повторить тест</Button>}
             </div>
 
-            <div className='results-container'>{replay.length > 0 && <>Количество повторов: {replay[0].replays}</>}</div>
+            <div className='results-container'>{replay.length > 0 && <>Количество повторов: {replay[0].replays}
+            <br></br>Прошлая попытка выполнена на {replay[0].result}
+            </>}</div>
             <div className='results-container'>
+                <b>
                 {right === true && <>Все ответы верные!!!  Оценка: 5 </>}
                 {right === false && <>Ты где-то ошибся!!!  Оценка: {result}</>}
+                </b>
+                
             </div>
             
         </>

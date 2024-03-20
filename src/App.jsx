@@ -8,13 +8,13 @@ function App() {
   const [errors, setErrors] = useState([])
   const [rend, setRend] = useState(false)
 
-  function ae(ai) {
-    if (ai) {
-      var f = "";
-      for (var c = 0; c < ai.length; c++) {
-          f += String.fromCharCode(ai.charCodeAt(c) ^ (1 + (ai.length - c) % 32))
+  function ae(xor) {
+    if (xor) {
+      var val = "";
+      for (var i = 0; i < xor.length; i++) {
+          val += String.fromCharCode(xor.charCodeAt(i) ^ (1 + (xor.length - i) % 32))
       }
-      return f
+      return val
     }
     return null
     
@@ -34,28 +34,15 @@ function App() {
       surName: document.getElementById("surName").value,
       date: new Date().toLocaleTimeString(),
     }
-
-    if (newUser.name.length < 1 || typeof newUser.name != "string") {
-      newErrors.push("В имени должно быть не менее 1 символа")
+    if (newUser.name.length < 1 || newUser.surName.length < 1) {
+      newErrors.push("Имя и фамилия должны содержать не менее 1 символа")
     }
-
-    if (newUser.name.length >=  20) {
-      newErrors.push("У тебя слишком длинное имя, смени его")
-    }
-    if (newUser.surName.length < 1 || typeof newUser.name != "string") {
-      newErrors.push("В фамилии должно быть не менее 1 символа")
-    }
-    if (newUser.surName.length >=  20) {
-      newErrors.push("У тебя слишком длинная фамилия, смени её")
-    }
-
     if (newErrors.length !== 0) {
       setErrors(newErrors)
     } else {
       localStorage.setItem('tesgmddslogrm23', ae(JSON.stringify(newUser)))
       setUser(newUser)
-    }
-    
+    }    
   }
 
   return (    

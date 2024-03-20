@@ -45,19 +45,14 @@ export default function SliderSection({... props}) {
         .filter((slide) => {
             let myArray = props.choiced[1][slide.id].modules.map((lection) => {return lection.title.toLowerCase().includes(input.value.toLowerCase())})
             if (slide.titleS.toLowerCase().includes(input.value.toLowerCase())) {
-                return true
-                
+                return true                
             } else if(myArray.includes(true)) {
                 return true
             }
             else {
                 false
-            }
-            
-        }
-    
-    
-    )     
+            }            
+        })     
 
     var thisPractices = props.choiced[3]
         
